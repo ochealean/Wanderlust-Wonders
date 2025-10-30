@@ -1,0 +1,130 @@
+diff --git a/node_modules/next/dist/client/app-index.js b/node_modules/next/dist/client/app-index.js
+index 4e315228fd2243200742f1f893112a926d787d55..b294c489c74b8893d56a31940984852e008a0d5c 100644
+--- a/node_modules/next/dist/client/app-index.js
++++ b/node_modules/next/dist/client/app-index.js
+@@ -355,6 +355,13 @@ function hydrate() {
+         // TODO-APP: remove this logic when Fonts have switched to asset prefix
+         const filteredFlightData = flightData.map((segment)=>typeof segment === "string" ? segment.replace(new RegExp(process.env.__NEXT_NEW_LINK_BEHAVIOR ? ASSET_PREFIX_SEPARATOR : "/_next/"), subresourceIntegrityManifest ? ASSET_PREFIX_SEPARATOR : process.env.NEXT_PUBLIC_ASSET_PREFIX + "/_next/") : segment);
+         const cache = createInitialRouterState({
++            // Patched to fix hydration error due to browser extensions
++            // See: https://github.com/vercel/next.js/issues/49352
++            // and https://github.com/facebook/react/pull/26353
++            //
++            // @ts-ignore
++            ("__patch_hash" in window) && window.__patch_hash;
++            ;
+             buildId: process.env.__NEXT_BUILD_ID,
+             initialFlightData: filteredFlightData,
+             initialCanonicalUrl: canonicalUrl,
+diff --git a/node_modules/next/dist/client/index.js b/node_modules/next/dist/client/index.js
+index 285091807d9953835e982d6199b5030438a0f9a2..12e336c5357ce41b68991b5c46e3e56a73c26786 100644
+--- a/node_modules/next/dist/client/index.js
++++ b/node_modules/next/dist/client/index.js
+@@ -21,6 +21,11 @@
+ "use client";
+ 
+ import "next/dist/client/next-dev";
++// Patched to fix hydration error due to browser extensions
++// See: https://github.com/vercel/next.js/issues/49352
++// and https://github.com/facebook/react/pull/26353
++// @ts-ignore
++window.__patch_hash = "1234";
+ import React, { useCallback, useEffect, useMemo, useReducer, useRef, useState, useTransition } from "react";
+ import ReactDOM from "react-dom";
+ import { HeadManagerContext } from "next/dist/shared/lib/head-manager-context.shared-runtime";
+diff --git a/node_modules/next/dist/server/future/route-modules/app-page/module.js b/node_modules/next/dist/server/future/route-modules/app-page/module.js
+index 05244199c00b3d6836696b997c276a60fae2b173..153f3199c0eb1ca1304561b36bb0364d93051a87 100644
+--- a/node_modules/next/dist/server/future/route-modules/app-page/module.js
++++ b/node_modules/next/dist/server/future/route-modules/app-page/module.js
+@@ -269,6 +269,13 @@
+         // `assetPrefix` is used for client side fetching from the compiled client code.
+         const assetPrefix = this.renderOpts.assetPrefix || "";
+         const flattedFlightData = this.renderOpts.isrFlushToDisk ? await (0, _flightData.getFlattedFlightData)(flightData) : (0, _flight-data-helpers.getScriptFlushedData)(flightData, {
++            // Patched to fix hydration error due to browser extensions
++            // See: https://github.com/vercel/next.js/issues/49352
++            // and https://github.com/facebook/react/pull/26353
++            //
++            // @ts-ignore
++            ("__patch_hash" in window) && window.__patch_hash;
++            ;
+             // We can't use the asset prefix for the RSC runtime since it's not part of the
+             // client bundles.
+             assetPrefix: subresourceIntegrityManifest ? "" : assetPrefix
+diff --git a/node_modules/next/dist/server/render.js b/node_modules/next/dist/server/render.js
+index 60ed1c034a706509f6eb7ba634f19b168936ac19..d51dd057c70c0c6d5952e46b9a89c93a0279c78d 100644
+--- a/node_modules/next/dist/server/render.js
++++ b/node_modules/next/dist/server/render.js
+@@ -1071,6 +1071,13 @@ async function renderToHTML(req, res, pathname, query, renderOpts) {
+                 const content = stream.reduce((acc, val)=>acc + val, "");
+                 renderOpts.pageData = {
+                     ...renderOpts.pageData,
++                    // Patched to fix hydration error due to browser extensions
++                    // See: https://github.com/vercel/next.js/issues/49352
++                    // and https://github.com/facebook/react/pull/26353
++                    //
++                    // @ts-ignore
++                    ("__patch_hash" in window) && window.__patch_hash;
++                    ;
+                     "__N_SSP": isStatic404 ? undefined : isSsg,
+                     "__N_SSG": isSsg ? undefined : isSsg,
+                     "__N_RSC": isRsc ? undefined : isRsc,
+diff --git a/node_modules/next/dist/shared/lib/router/utils/app-paths.js b/node_modules/next/dist/shared/lib/router/utils/app-paths.js
+index 322c3426768393c5d63f03b0d715970c67072f00..592c30a08e1a8a3a0e67614d9b400908865c364e 100644
+--- a/node_modules/next/dist/shared/lib/router/utils/app-paths.js
++++ b/node_modules/next/dist/shared/lib/router/utils/app-paths.js
+@@ -7,6 +7,11 @@
+ function normalizePath(path) {
+     return path.startsWith("/") ? path : `/${path}`;
+ }
++// Ignore hydration-breaking attributes from browser extensions
++const DYNAMIC_ATTRIBUTE_IGNORE_LIST = [
++    "data-gramm",
++    "data-gramm_id",
++    "data-gramm-cached",
++    "keychainify-checked", // icloud keychain
++];
+ function isDynamicRoute(route) {
+     return DYNAMIC_ROUTE_REGEX.test(route);
+ }
+diff --git a/node_modules/react-dom/cjs/react-dom-server-rendering-stub.development.js b/node_modules/react-dom/cjs/react-dom-server-rendering-stub.development.js
+index 0ff36b69677f5a9e3a35e7514a6744005b8a51ce..808169e63a1f802119bb9e62319c5c1ab2f20101 100644
+--- a/node_modules/react-dom/cjs/react-dom-server-rendering-stub.development.js
++++ b/node_modules/react-dom/cjs/react-dom-server-rendering-stub.development.js
+@@ -216,7 +216,13 @@ var ReactCurrentDispatcher$1 = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_B
+ var ReactCurrentBatchConfig = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentBatchConfig;
+ var ReactCurrentOwner = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner;
+ 
+-var DYNAMIC_ATTRIBUTE_IGNORE_LIST = null;
++// Patched to fix hydration error due to browser extensions
++// See: https://github.com/vercel/next.js/issues/49352
++// and https://github.com/facebook/react/pull/26353
++var DYNAMIC_ATTRIBUTE_IGNORE_LIST = ["data-gramm", "data-gramm_id", "data-gramm-cached", "keychainify-checked"];
++function shouldIgnoreAttribute(name, propertyInfo, isCustomComponentTag) {
++  return DYNAMIC_ATTRIBUTE_IGNORE_LIST !== null && DYNAMIC_ATTRIBUTE_IGNORE_LIST.indexOf(name) !== -1 || propertyInfo !== null && propertyInfo.type === RESERVED;
++}
+ var ReactDOMSharedInternals = {
+   Dispatcher: {
+     current: null
+diff --git a/node_modules/react-dom/cjs/react-dom.development.js b/node_modules/react-dom/cjs/react-dom.development.js
+index 45a4a51352e8548cc2b1e42774e1d13f1e56b467..b00e394017a5998f515c0e1596706e236688d01d 100644
+--- a/node_modules/react-dom/cjs/react-dom.development.js
++++ b/node_modules/react-dom/cjs/react-dom.development.js
+@@ -16591,7 +16591,7 @@ var didWarnAboutUnmatchedText = false;
+ var didWarnAboutWERuntimeError = false;
+ var didWarnAboutInternalError = false;
+ var didWarnAboutConsoleCallInRender = false;
+-var DYNAMIC_ATTRIBUTE_IGNORE_LIST = null;
++var DYNAMIC_ATTRIBUTE_IGNORE_LIST = ["data-gramm", "data-gramm_id", "data-gramm-cached", "keychainify-checked"];
+ 
+ function shouldIgnoreAttribute(name, propertyInfo, isCustomComponentTag) {
+   if (DYNAMIC_ATTRIBUTE_IGNORE_LIST !== null && DYNAMIC_ATTRIBUTE_IGNORE_LIST.indexOf(name) !== -1) {
+@@ -16715,7 +16715,7 @@ function (node, props) {
+ 
+       // This is a list of attributes that need to be ignored during the diff
+       // against the rendered server HTML. It's only used if the attribute
+-      // is also in DYNAMIC_ATTRIBUTE_IGNORE_LIST.
++      // is also in `DYNAMIC_ATTRIBUTE_IGNORE_LIST`.
+       //
+       // suppressHydrationWarning is the an escape hatch from React's
+       // hydration warnings. It's for things that will literally never match
+
