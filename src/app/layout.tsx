@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full" suppressHydrationWarning={true}>
+    <html lang="en" className="h-full">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -32,6 +32,7 @@ export default function RootLayout({
         />
       </head>
       <body
+        suppressHydrationWarning={true}
         className={cn(
           'font-body antialiased min-h-screen flex flex-col',
           'bg-background'
