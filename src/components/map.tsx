@@ -1,6 +1,7 @@
 'use client';
 
-import { Map, AdvancedMarker, Pin } from '@vis.gl/react-google-maps';
+import { useMemo } from 'react';
+import { Map, AdvancedMarker, Pin, useApiIsLoaded } from '@vis.gl/react-google-maps';
 
 type InteractiveMapProps = {
   lat: number;
@@ -9,7 +10,12 @@ type InteractiveMapProps = {
 };
 
 export default function InteractiveMap({ lat, lng, name }: InteractiveMapProps) {
-  const position = { lat, lng };
+  const position = useMemo(() => ({ lat, lng }), [lat, lng]);
+  const isLoaded = useApiIsLoaded();
+
+  if (!isLoaded) {
+    return <div className="h-full w-full rounded-lg bg-muted flex items-center justify-center"><p className="text-muted-foreground">Map is unavailable. Please provide a Google Maps API key.</p></div>;
+  }
 
   return (
     <div className="h-full w-full rounded-lg overflow-hidden">
