@@ -1,3 +1,100 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "A stunning landscape view of mountains and a lake, perfect for a travel website hero section.",
+      "imageUrl": "https://images.unsplash.com/photo-1641198577715-a0673cadde56?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxsYW5kc2NhcGUlMjBtb3VudGFpbnN8ZW58MHx8fHwxNzYxODI1OTYyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "landscape mountains"
+    },
+    {
+      "id": "kyoto-japan",
+      "description": "Ancient temples and serene gardens of Kyoto, Japan.",
+      "imageUrl": "https://images.unsplash.com/photo-1731413285576-27afada8adfc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0ZW1wbGUlMjBKYXBhbnxlbnwwfHx8fDE3NjE4NDY5OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "temple Japan"
+    },
+    {
+      "id": "santorini-greece",
+      "description": "Iconic white and blue buildings overlooking the sea in Santorini, Greece.",
+      "imageUrl": "https://images.unsplash.com/photo-1688664562000-4c1f7cdb48f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxTYW50b3JpbmklMjBHcmVlY2V8ZW58MHx8fHwxNzYxNzU3MzU0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "Santorini Greece"
+    },
+    {
+      "id": "serengeti-tanzania",
+      "description": "Vast plains of the Serengeti with wildlife.",
+      "imageUrl": "https://images.unsplash.com/photo-1594491837471-bd439938f0b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzYWZhcmklMjB3aWxkbGlmZXxlbnwwfHx8fDE3NjE4NDY5OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "safari wildlife"
+    },
+    {
+      "id": "machu-picchu-peru",
+      "description": "The ancient Incan city of Machu Picchu in the Andes Mountains.",
+      "imageUrl": "https://images.unsplash.com/photo-1610025074349-692706795cc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxhbmNpZW50JTIwcnVpbnN8ZW58MHx8fHwxNzYxNzg1MDE4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ancient ruins"
+    },
+    {
+      "id": "paris-france",
+      "description": "The Eiffel Tower in Paris, France.",
+      "imageUrl": "https://images.unsplash.com/photo-1431274172761-fca41d930114?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxFaWZmZWwlMjBUb3dlcnxlbnwwfHx8fDE3NjE3NzkyMTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "Eiffel Tower"
+    },
+    {
+      "id": "bora-bora",
+      "description": "Overwater bungalows in the turquoise lagoon of Bora Bora.",
+      "imageUrl": "https://images.unsplash.com/photo-1545579133-99bb5ab189bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx0cm9waWNhbCUyMGlzbGFuZHxlbnwwfHx8fDE3NjE4Mzk4MjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tropical island"
+    },
+    {
+      "id": "blog-packing-tips",
+      "description": "An open suitcase with clothes neatly packed.",
+      "imageUrl": "https://images.unsplash.com/photo-1567113463300-102a7eb3cb26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cGFja2luZyUyMHN1aXRjYXNlfGVufDB8fHx8MTc2MTg0Njk5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "packing suitcase"
+    },
+    {
+      "id": "blog-budget-travel",
+      "description": "A person holding a globe made of coins.",
+      "imageUrl": "https://images.unsplash.com/photo-1676313609592-909607f7332f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtb25leSUyMGJ1ZGdldHxlbnwwfHx8fDE3NjE4NDY5OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "money budget"
+    },
+    {
+      "id": "blog-solo-travel",
+      "description": "A solo traveler looking at a map with a backpack.",
+      "imageUrl": "https://images.unsplash.com/photo-1522506209496-4536d9020ec4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzb2xvJTIwdHJhdmVsfGVufDB8fHx8MTc2MTg0Njk5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "solo travel"
+    },
+    {
+      "id": "avatar1",
+      "description": "Avatar for a user review.",
+      "imageUrl": "https://images.unsplash.com/photo-1535643302794-19c3804b874b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cGVyc29uJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYxNzg4Nzg3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "avatar2",
+      "description": "Avatar for a user review.",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjE3ODg3ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "avatar3",
+      "description": "Avatar for a user review.",
+      "imageUrl": "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjE3ODg3ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "kyoto-gallery-1",
+      "description": "A gallery image of Kyoto.",
+      "imageUrl": "https://images.unsplash.com/photo-1731413285576-27afada8adfc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0ZW1wbGUlMjBKYXBhbnxlbnwwfHx8fDE3NjE4NDY5OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "temple Japan"
+    },
+    {
+      "id": "kyoto-gallery-2",
+      "description": "A gallery image of Kyoto.",
+      "imageUrl": "https://images.unsplash.com/photo-1586581277029-5769487f3881?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxiYW1ib28lMjBmb3Jlc3R8ZW58MHx8fHwxNzYxODEzNjQ0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bamboo forest"
+    },
+    {
+      "id": "kyoto-gallery-3",
+      "description": "A gallery image of Kyoto.",
+      "imageUrl": "https://images.unsplash.com/photo-1682410641633-d369c1da9c63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxnZWlzaGElMjBkaXN0cmljdHxlbnwwfHx8fDE3NjE4NDY5OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "geisha district"
+    }
+  ]
 }
